@@ -1,0 +1,94 @@
+### Register Admin
+POST http://localhost:8080/api/users/admin
+Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "GALEH",
+  "email": "3130021003@student.unusa.ac.id",
+  "password": "rahasia"
+}
+
+### Register User
+POST http://localhost:8080/api/users
+Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "Irwana",
+  "email": "test@gmail.com",
+  "gender": "perempuan",
+  "tempat_lahir": "Sidoarjo",
+  "birthDate": "11-10-2002",
+  "category": "M",
+  "instansi": "Sistem Informasi",
+  "anamnesa": "Merana",
+  "diagnosis": "Galau Tinggi",
+  "therapy": "Bapak Ibu Ku",
+  "totalObat": 10
+}
+
+### Login
+POST http://localhost:8080/api/auth/login
+Accept: application/json
+Content-Type: application/json
+
+{
+  "email": "3130021004@student.unusa.ac.id",
+  "password": "YFEQDEZD"
+}
+
+### Get User Current
+GET http://localhost:8080/api/users/current
+Accept: application/json
+X-API-TOKEN: 66d5af46-0d0a-4409-b5a3-aa86d7106190
+
+### Get List User
+GET http://localhost:8080/api/users
+Accept: application/json
+
+
+### Search User (bermasalah data muncul semua)
+GET http://localhost:8080/api/users/search?name=irwana
+Accept: application/json
+
+### Get total pengunjung
+GET http://localhost:8080/api/users/total
+Accept: application/json
+
+### Logout
+DELETE http://localhost:8080/api/auth/logout
+Accept: application/json
+x-API-TOKEN: 8618368b-e64f-4ef4-874a-d3e419f49e69
+
+### Add rekam medis
+POST http://localhost:8080/api/rm/M3
+Accept: application/json
+Content-Type: application/json
+
+{
+  "anamnesa": "Pusing",
+  "diagnosis": "Migrain",
+  "therapy": "Tidur aja",
+  "jumlahObat": 8
+}
+
+### Add Obat
+POST http://localhost:8080/api/obat
+Accept: application/json
+Content-Type: application/json
+
+{
+  "nameObat": "Bapak Phropent 2",
+  "expired": "10-10-2029",
+  "minStock": 20,
+  "stock": 100
+}
+
+### Get List Obat
+GET http://localhost:8080/api/obat
+Accept: application/json
+Content-Type: application/json
+
+
+
