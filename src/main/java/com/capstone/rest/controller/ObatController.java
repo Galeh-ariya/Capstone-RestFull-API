@@ -54,4 +54,13 @@ public class ObatController {
                 .build();
     }
 
+    @GetMapping(
+            path = "/api/nameObat",
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public WebResponse<List<String>> listName() {
+        List<String> names = service.listNameObat();
+        return WebResponse.<List<String>>builder().data(names).build();
+    }
+
 }

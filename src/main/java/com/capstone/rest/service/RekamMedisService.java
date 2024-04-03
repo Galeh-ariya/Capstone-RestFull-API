@@ -41,19 +41,33 @@ public class RekamMedisService {
 
         RekamMedis rm = new RekamMedis();
         rm.setAnamnesa(request.getAnamnesa());
+        rm.setPemeriksaan(request.getPemeriksaan());
         rm.setDiagnosis(request.getDiagnosis());
         rm.setTherapy(request.getTherapy());
+        rm.setTherapy2(request.getTherapy2());
+        rm.setTherapy3(request.getTherapy3());
+        rm.setTherapy4(request.getTherapy4());
         rm.setCreatedAt(LocalDate.now());
         rm.setTotalObat(request.getJumlahObat());
+        rm.setTotalObat2(request.getJumlahObat2());
+        rm.setTotalObat3(request.getJumlahObat3());
+        rm.setTotalObat4(request.getJumlahObat4());
         rm.setUser(user);
         repository.save(rm);
 
         return CreateRekamMedisResponse.builder()
                 .anamnesa(rm.getAnamnesa())
+                .pemeriksaan(rm.getPemeriksaan())
                 .diagnosis(rm.getDiagnosis())
                 .therapy(rm.getTherapy())
+                .therapy2(rm.getTherapy2())
+                .therapy3(rm.getTherapy3())
+                .therapy4(rm.getTherapy4())
                 .noRm(noRm)
-                .jumlahObat(request.getJumlahObat())
+                .jumlahObat(rm.getTotalObat())
+                .jumlahObat2(rm.getTotalObat2())
+                .jumlahObat3(rm.getTotalObat3())
+                .jumlahObat4(rm.getTotalObat4())
                 .build();
     }
 
@@ -63,6 +77,7 @@ public class RekamMedisService {
         List<RekamMedis> allByUser = repository.findAllByUser(user).stream().toList();
         return allByUser.stream().map(list -> CreateRekamMedisResponse.builder()
                 .anamnesa(list.getAnamnesa())
+                .pemeriksaan(list.getPemeriksaan())
                 .diagnosis(list.getDiagnosis())
                 .therapy(list.getTherapy())
                 .therapy2(list.getTherapy2())

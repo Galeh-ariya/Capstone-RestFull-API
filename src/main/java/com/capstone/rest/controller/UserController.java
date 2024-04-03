@@ -79,6 +79,7 @@ public class UserController {
     public WebResponse<List<GetUserResponse>> search(
             @RequestParam(value = "name", required = false) String name,
             @RequestParam(value = "no_rm", required = false) String noRm,
+            @RequestParam(value = "instansi", required = false) String instansi,
             @RequestParam(value = "page", required = false, defaultValue = "0")Integer page,
             @RequestParam(value = "size", required = false, defaultValue = "10") Integer size
     ) {
@@ -87,6 +88,7 @@ public class UserController {
                 .size(size)
                 .name(name)
                 .noRm(noRm)
+                .instansi(instansi)
                 .build();
 
         Page<GetUserResponse> responses = service.search(request);

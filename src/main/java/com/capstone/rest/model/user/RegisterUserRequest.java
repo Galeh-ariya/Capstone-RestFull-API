@@ -51,6 +51,9 @@ public class RegisterUserRequest {
     private String anamnesa;
 
     @NotBlank
+    private String pemeriksaan;
+
+    @NotBlank
     @Size(max = 100)
     private String diagnosis;
 
@@ -58,7 +61,19 @@ public class RegisterUserRequest {
     @Size(max = 100)
     private String therapy;
 
+    private String therapy2;
+
+    private String therapy3;
+
+    private String therapy4;
+
     @NotNull
     private Integer totalObat;
+
+    private Integer totalObat2;
+
+    private Integer totalObat3;
+
+    private Integer totalObat4;
 
 }

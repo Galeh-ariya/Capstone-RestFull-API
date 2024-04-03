@@ -50,11 +50,10 @@ ALTER TABLE rekam_medis
     ADD COLUMN keterangan   TEXT AFTER total_obat_3;
 
 ALTER TABLE rekam_medis
-    RENAME COLUMN id_obat to id_rm;
+    RENAME COLUMN thetapy_4 to therapy_4;
 
 
-SELECT *
-FROM rekam_medis;
+
 
 DESC rekam_medis;
 

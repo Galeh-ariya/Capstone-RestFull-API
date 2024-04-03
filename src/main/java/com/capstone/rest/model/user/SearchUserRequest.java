@@ -20,6 +20,8 @@ public class SearchUserRequest {
 
     private String noRm;
 
+    private String instansi;
+
     @NotNull
     private Integer page;
 

@@ -13,6 +13,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -58,6 +59,15 @@ public class ObatService {
         return list.stream().map(lists -> toObatResponse(lists)).toList();
     }
 
+    public List<String> listNameObat() {
+        List<Obat> lists = repository.findAll();
+        List<String> nameObat = new ArrayList<>();
+        for(Obat obat : lists) {
+            nameObat.add(obat.getNameObat());
+        }
+        return nameObat;
+    }
+
     @Transactional
     public ObatResponse update(UpdateObatRequest request) {
         Obat obat = repository.findFirstByIdObat(request.getIdObat()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Id Obat tidak ada"));
@@ -92,6 +102,8 @@ public class ObatService {
                 .expired(obat.getExpiredAt())
                 .build();
     }
+
+
 
     private ObatResponse toObatResponse(Obat obat) {
         return ObatResponse.builder()

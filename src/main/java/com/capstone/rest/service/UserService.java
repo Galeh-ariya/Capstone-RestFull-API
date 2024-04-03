@@ -41,6 +41,9 @@ public class UserService {
     @Autowired
     private RmRepository rmRepository;
 
+    @Autowired
+    private EmailServiceImpl emailService;
+
     @Transactional
     public void registerAdm(RegisterUserAdminRequest request) {
         validator.validate(request);
@@ -79,7 +82,7 @@ public class UserService {
         LocalDate createdAt = LocalDate.now();
 
 //        Conversi String to LocalDate
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate date = LocalDate.parse(request.getBirthDate(), formatter);
 
         User newUser = new User();
@@ -98,12 +101,22 @@ public class UserService {
 
         RekamMedis rm = new RekamMedis();
         rm.setAnamnesa(request.getAnamnesa());
+        rm.setPemeriksaan(request.getPemeriksaan());
         rm.setDiagnosis(request.getDiagnosis());
         rm.setTherapy(request.getTherapy());
+        rm.setTherapy2(request.getTherapy2());
+        rm.setTherapy3(request.getTherapy3());
+        rm.setTherapy4(request.getTherapy4());
         rm.setUser(newUser);
         rm.setCreatedAt(createdAt);
         rm.setTotalObat(request.getTotalObat());
+        rm.setTotalObat2(request.getTotalObat2());
+        rm.setTotalObat3(request.getTotalObat3());
+        rm.setTotalObat4(request.getTotalObat4());
         rmRepository.save(rm);
+
+//        Send email yang dikirim email, password, no rekam medis
+        emailService.sendSimpleMessage(newUser.getEmail(), pw, newUser.getNoRm());
 
         return RegisterUserResponse.builder()
                 .email(newUser.getEmail())
@@ -147,6 +160,10 @@ public class UserService {
 
             if (Objects.nonNull(request.getNoRm())) {
                 predicates.add(builder.like(root.get("noRm"), "%" + request.getNoRm() + "%"));
+            }
+
+            if (Objects.nonNull(request.getInstansi())) {
+                predicates.add(builder.like(root.get("instansi"), "%" + request.getInstansi() + "%"));
             }
 
             return query.where(predicates.toArray(new Predicate[]{})).getRestriction();

@@ -48,7 +48,7 @@ public class RekamMedis {
     @Column(name = "total_obat_4")
     private Integer totalObat4;
 
-    private String keterangan;
+    private String pemeriksaan;
 
     @Column(name = "created_at")
     private LocalDate createdAt;

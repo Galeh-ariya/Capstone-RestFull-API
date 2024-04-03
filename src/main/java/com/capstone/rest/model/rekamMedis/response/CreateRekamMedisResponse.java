@@ -19,6 +19,8 @@ public class CreateRekamMedisResponse {
 
     private String anamnesa;
 
+    private String pemeriksaan;
+
     private String diagnosis;
 
     private String therapy;

@@ -15,17 +15,20 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "name": "Irwana",
-  "email": "test@gmail.com",
+  "name": "Amelia Wardana",
+  "email": "kigaleh321@gmail.com",
   "gender": "perempuan",
-  "tempat_lahir": "Sidoarjo",
-  "birthDate": "11-10-2002",
+  "tempat_lahir": "Labuan Bajo",
+  "birthDate": "2002-10-10",
   "category": "M",
-  "instansi": "Sistem Informasi",
-  "anamnesa": "Merana",
-  "diagnosis": "Galau Tinggi",
-  "therapy": "Bapak Ibu Ku",
-  "totalObat": 10
+  "instansi": "Kedokteran",
+  "anamnesa": "Nyeri Otot",
+  "pemeriksaan": "Kesleo Otot",
+  "diagnosis": "Gangguan Jiwa",
+  "therapy": "Lurusin Otot",
+  "therapy2": "P",
+  "totalObat": 10,
+  "totalObat": 20
 }
 
 ### Login
@@ -49,7 +52,7 @@ Accept: application/json
 
 
 ### Search User (bermasalah data muncul semua)
-GET http://localhost:8080/api/users/search?name=irwana
+GET http://localhost:8080/api/users/search?instansi=Sistem Informasi
 Accept: application/json
 
 ### Get total pengunjung
@@ -59,19 +62,27 @@ Accept: application/json
 ### Logout
 DELETE http://localhost:8080/api/auth/logout
 Accept: application/json
-x-API-TOKEN: 8618368b-e64f-4ef4-874a-d3e419f49e69
+x-API-TOKEN: 6b8a4b91-875e-4726-bcab-868e44bb4b8a
 
 ### Add rekam medis
-POST http://localhost:8080/api/rm/M3
+POST http://localhost:8080/api/rm/K8
 Accept: application/json
 Content-Type: application/json
 
 {
   "anamnesa": "Pusing",
+  "pemeriksaan": "",
   "diagnosis": "Migrain",
   "therapy": "Tidur aja",
-  "jumlahObat": 8
+  "therapy2": "Tidur lagi",
+  "therapy3": "eh Tidur",
+  "jumlahObat": 8,
+  "jumlahObat2": 8,
+  "jumlahObat3": 8
 }
+
+### Get Rekam Medis
+GET http://localhost:8080/api/rm/M3
 
 ### Add Obat
 POST http://localhost:8080/api/obat
@@ -87,6 +98,11 @@ Content-Type: application/json
 
 ### Get List Obat
 GET http://localhost:8080/api/obat
+Accept: application/json
+Content-Type: application/json
+
+### Get List Obat
+GET http://localhost:8080/api/nameObat
 Accept: application/json
 Content-Type: application/json
 
